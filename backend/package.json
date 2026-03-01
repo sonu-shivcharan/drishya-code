@@ -1,0 +1,42 @@
+{
+  "name": "drishya-code-backend",
+  "version": "1.0.0",
+  "description": "Backend Lambda functions for Drishya-Code platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:property": "jest --testMatch='**/*.property.test.ts'",
+    "build": "tsc",
+    "lint": "eslint . --ext .ts",
+    "dev": "ts-node server.ts",
+    "start": "node dist/server.js"
+  },
+  "keywords": ["drishya-code", "education", "code-visualization"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.0.0",
+    "@aws-sdk/client-polly": "^3.0.0",
+    "@aws-sdk/client-s3": "^3.0.0",
+    "@aws-sdk/client-dynamodb": "^3.0.0",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "esprima": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/jest": "^29.0.0",
+    "@types/esprima": "^4.0.6",
+    "@types/express": "^4.17.21",
+    "@types/cors": "^2.8.17",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "fast-check": "^3.15.0",
+    "jest": "^29.0.0",
+    "ts-jest": "^29.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.0.0"
+  }
+}

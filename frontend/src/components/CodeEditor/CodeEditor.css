@@ -1,0 +1,143 @@
+.code-editor-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.code-editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+
+.code-editor-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.language-badge {
+  padding: 4px 12px;
+  background: #2196f3;
+  color: white;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.code-editor-wrapper {
+  display: flex;
+  background: #fafafa;
+  min-height: 400px;
+  max-height: 600px;
+  overflow: auto;
+}
+
+.line-numbers {
+  padding: 16px 8px;
+  background: #f0f0f0;
+  color: #999;
+  text-align: right;
+  user-select: none;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  border-right: 1px solid #ddd;
+}
+
+.line-number {
+  height: 21px;
+}
+
+.code-input {
+  flex: 1;
+  padding: 16px;
+  border: none;
+  outline: none;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: none;
+  background: transparent;
+  color: #333;
+  tab-size: 4;
+}
+
+.code-input::placeholder {
+  color: #999;
+}
+
+.code-editor-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #ffebee;
+  color: #c62828;
+  border-top: 1px solid #ef9a9a;
+  font-size: 14px;
+}
+
+.error-icon {
+  font-size: 18px;
+}
+
+.code-editor-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #f5f5f5;
+  border-top: 1px solid #ddd;
+}
+
+.code-stats {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: #666;
+}
+
+.visualize-button {
+  padding: 8px 24px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.visualize-button:hover:not(:disabled) {
+  background: #45a049;
+}
+
+.visualize-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .code-editor-wrapper {
+    min-height: 300px;
+  }
+
+  .code-input {
+    font-size: 12px;
+  }
+
+  .line-numbers {
+    font-size: 12px;
+  }
+}

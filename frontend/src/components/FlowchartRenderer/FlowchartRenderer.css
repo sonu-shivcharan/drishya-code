@@ -1,0 +1,159 @@
+.flowchart-renderer-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  height: 100%;
+}
+
+.flowchart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+
+.flowchart-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.flowchart-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.control-button {
+  padding: 6px 12px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  transition: all 0.2s;
+  min-width: 40px;
+}
+
+.control-button:hover:not(:disabled) {
+  background: #f0f0f0;
+  border-color: #2196f3;
+}
+
+.control-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.flowchart-content {
+  flex: 1;
+  position: relative;
+  overflow: auto;
+  background: #fafafa;
+  min-height: 400px;
+}
+
+.flowchart-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 16px;
+  color: #666;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #2196f3;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.flowchart-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 24px;
+  margin: 24px;
+  background: #ffebee;
+  border: 1px solid #ef9a9a;
+  border-radius: 8px;
+  color: #c62828;
+}
+
+.flowchart-error .error-icon {
+  font-size: 24px;
+}
+
+.flowchart-error h4 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+}
+
+.flowchart-error p {
+  margin: 0;
+  font-size: 14px;
+  color: #d32f2f;
+}
+
+.flowchart-wrapper {
+  padding: 24px;
+  transition: transform 0.2s;
+  display: flex;
+  justify-content: center;
+}
+
+.mermaid-container {
+  display: inline-block;
+}
+
+.mermaid-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Node hover effects */
+.mermaid-container .node:hover {
+  opacity: 0.8;
+}
+
+.mermaid-container .node.highlighted {
+  filter: drop-shadow(0 0 8px rgba(33, 150, 243, 0.8));
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .flowchart-controls {
+    gap: 4px;
+  }
+
+  .control-button {
+    padding: 4px 8px;
+    font-size: 12px;
+    min-width: 32px;
+  }
+
+  .flowchart-wrapper {
+    padding: 16px;
+  }
+}
