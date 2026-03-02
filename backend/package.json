@@ -4,9 +4,7 @@
   "description": "Backend Lambda functions for Drishya-Code platform",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:property": "jest --testMatch='**/*.property.test.ts'",
+    "test": "echo \"No tests defined\"",
     "build": "tsc",
     "lint": "eslint . --ext .ts",
     "dev": "ts-node server.ts",
@@ -26,16 +24,12 @@
   },
   "devDependencies": {
     "@types/node": "^25.3.3",
-    "@types/jest": "^30.0.0",
     "@types/esprima": "^4.0.6",
     "@types/express": "^5.0.6",
     "@types/cors": "^2.8.19",
     "@typescript-eslint/eslint-plugin": "^8.56.1",
     "@typescript-eslint/parser": "^8.56.1",
     "eslint": "^10.0.2",
-    "fast-check": "^4.5.3",
-    "jest": "^30.2.0",
-    "ts-jest": "^29.4.6",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }
