@@ -11,16 +11,19 @@
     "synth": "cdk synth",
     "diff": "cdk diff"
   },
-  "keywords": ["aws-cdk", "infrastructure"],
+  "keywords": [
+    "aws-cdk",
+    "infrastructure"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "aws-cdk-lib": "^2.120.0",
-    "constructs": "^10.0.0"
+    "aws-cdk-lib": "^2.240.0",
+    "constructs": "^10.5.1"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "aws-cdk": "^2.120.0",
-    "typescript": "^5.0.0"
+    "@types/node": "^25.3.3",
+    "aws-cdk": "^2.1108.0",
+    "typescript": "^5.9.3"
   }
 }

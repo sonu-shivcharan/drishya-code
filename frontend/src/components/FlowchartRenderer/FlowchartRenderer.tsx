@@ -197,14 +197,16 @@ export const FlowchartRenderer: React.FC<FlowchartRendererProps> = ({
           </div>
         )}
 
-        {!isLoading && !error && (
-          <div
-            className="flowchart-wrapper"
-            style={{ transform: `scale(${zoom})`, transformOrigin: 'top center' }}
-          >
-            <div ref={containerRef} className="mermaid-container" />
-          </div>
-        )}
+        <div
+          className="flowchart-wrapper"
+          style={{ 
+            transform: `scale(${zoom})`, 
+            transformOrigin: 'top center',
+            display: (isLoading || error) ? 'none' : 'block'
+          }}
+        >
+          <div ref={containerRef} className="mermaid-container" />
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { CodeEditor } from './components/CodeEditor/CodeEditor';
 import { LanguageSelector } from './components/CodeEditor/LanguageSelector';
 import { SampleSelector } from './components/SampleSelector/SampleSelector';
@@ -38,7 +38,7 @@ function App() {
         language,
         userId: 'demo-user',
       });
-
+      console.log("analysisResult", analysisResult);
       if (analysisResult.errors && analysisResult.errors.length > 0) {
         const criticalErrors = analysisResult.errors.filter((e) => e.severity === 'error');
         if (criticalErrors.length > 0) {
@@ -60,6 +60,7 @@ function App() {
           language: 'english',
         },
       });
+      console.log("visualizationResult", visualizationResult);
 
       setMermaidSyntax(visualizationResult.mermaidSyntax);
       setStats({
@@ -94,23 +95,23 @@ function App() {
     }
   };
 
-  const handleLoadSample = (sampleCode: string) => {
+  const handleLoadSample = useCallback((sampleCode: string) => {
     setCode(sampleCode);
     setMermaidSyntax(''); // Clear previous visualization
     setError(null);
     setStats(null);
     setExplanation(null);
-  };
+  }, []);
 
-  const handleElementClick = (elementId: string) => {
+  const handleElementClick = useCallback((elementId: string) => {
     console.log('Element clicked:', elementId);
     // TODO: Implement code highlighting based on element
-  };
+  }, []);
 
-  const handleElementHover = (elementId: string | null) => {
+  const handleElementHover = useCallback((elementId: string | null) => {
     console.log('Element hovered:', elementId);
     // TODO: Implement hover tooltip
-  };
+  }, []);
 
   return (
     <div className="app">
@@ -156,7 +157,7 @@ function App() {
                 mermaidSyntax={mermaidSyntax}
                 onElementClick={handleElementClick}
                 onElementHover={handleElementHover}
-                theme="light"
+                theme="cultural"
               />
               {explanation && (
                 <ExplanationPanel

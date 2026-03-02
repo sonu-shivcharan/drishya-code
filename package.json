@@ -9,7 +9,7 @@
     "infrastructure"
   ],
   "scripts": {
-    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "install:all": "npm install --legacy-peer-deps && cd frontend && npm install --legacy-peer-deps && cd ../backend && npm install --legacy-peer-deps",
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:frontend": "cd frontend && npm run dev",
     "dev:backend": "cd backend && npm run dev",
@@ -34,7 +34,11 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "prettier": "^3.1.0",
-    "concurrently": "^8.2.2"
+    "prettier": "^3.8.1",
+    "concurrently": "^9.2.1"
+  },
+  "overrides": {
+    "minimatch": "^10.0.1",
+    "esbuild": "^0.25.0"
   }
 }
