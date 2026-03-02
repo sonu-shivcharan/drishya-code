@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import { PythonParser } from './code-analysis/python-parser/parser';
 import { MermaidGenerator } from './visualization/mermaidGenerator';
+import { CodeExplainer } from './ai-explanation/explainer';
 import {
   CodeAnalysisRequest,
   CodeAnalysisResponse,
@@ -108,6 +109,45 @@ app.post('/api/visualize', async (req: Request, res: Response) => {
   }
 });
 
+// AI Explanation endpoint
+app.post('/api/explain', async (req: Request, res: Response) => {
+  try {
+    const { code, flowElements, complexity, elementId } = req.body;
+
+    // Validate request
+    if (!code || !flowElements) {
+      return res.status(400).json({ error: 'Code and flow elements are required' });
+    }
+
+    // Generate explanation
+    const explainer = new CodeExplainer();
+    const explanation = explainer.explainCode(code, flowElements);
+    const tips = explainer.generateTips(flowElements, complexity || 0);
+
+    let elementExplanation: string | undefined;
+    if (elementId) {
+      const element = flowElements.find((el: any) => el.id === elementId);
+      if (element) {
+        elementExplanation = explainer.explainElement(element, flowElements);
+      }
+    }
+
+    console.log('Explanation generated successfully');
+
+    res.json({
+      explanation,
+      tips,
+      elementExplanation,
+    });
+  } catch (error) {
+    console.error('Explanation error:', error);
+    res.status(500).json({
+      error: 'Internal server error',
+      message: error instanceof Error ? error.message : 'Unknown error',
+    });
+  }
+});
+
 // Error handling middleware
 app.use((err: Error, req: Request, res: Response, next: any) => {
   console.error('Unhandled error:', err);
@@ -123,6 +163,7 @@ app.listen(PORT, () => {
   console.log(`📊 API endpoints:`);
   console.log(`   - POST http://localhost:${PORT}/api/analyze`);
   console.log(`   - POST http://localhost:${PORT}/api/visualize`);
+  console.log(`   - POST http://localhost:${PORT}/api/explain`);
   console.log(`   - GET  http://localhost:${PORT}/health`);
 });
 
