@@ -22,8 +22,17 @@ body {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   padding: 24px;
-  text-align: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-content {
+  flex: 1;
+  min-width: 250px;
 }
 
 .app-header h1 {
@@ -34,6 +43,34 @@ body {
 .app-header p {
   font-size: 16px;
   opacity: 0.9;
+}
+
+.header-stats {
+  display: flex;
+  gap: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px 24px;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-label {
+  font-size: 12px;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .app-main {
@@ -75,6 +112,16 @@ body {
 .empty-state-icon {
   font-size: 64px;
   margin-bottom: 16px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .empty-state h2 {
@@ -86,6 +133,44 @@ body {
 .empty-state p {
   font-size: 16px;
   color: #666;
+  margin-bottom: 24px;
+}
+
+.empty-state-tips {
+  margin-top: 32px;
+  padding: 24px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  text-align: left;
+  max-width: 400px;
+}
+
+.empty-state-tips h3 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.empty-state-tips ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.empty-state-tips li {
+  padding: 8px 0;
+  color: #666;
+  font-size: 14px;
+  position: relative;
+  padding-left: 24px;
+}
+
+.empty-state-tips li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #4caf50;
+  font-weight: bold;
 }
 
 /* Responsive design */
@@ -93,9 +178,18 @@ body {
   .app-main {
     grid-template-columns: 1fr;
   }
+  
+  .header-stats {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 768px) {
+  .app-header {
+    padding: 16px;
+  }
+  
   .app-header h1 {
     font-size: 24px;
   }
@@ -107,5 +201,35 @@ body {
   .app-main {
     padding: 16px;
     gap: 16px;
+  }
+  
+  .header-stats {
+    gap: 16px;
+    padding: 8px 16px;
+  }
+  
+  .stat-value {
+    font-size: 20px;
+  }
+  
+  .empty-state {
+    padding: 24px;
+    min-height: 300px;
+  }
+  
+  .empty-state-icon {
+    font-size: 48px;
+  }
+  
+  .empty-state h2 {
+    font-size: 20px;
+  }
+  
+  .empty-state p {
+    font-size: 14px;
+  }
+  
+  .empty-state-tips {
+    padding: 16px;
   }
 }
