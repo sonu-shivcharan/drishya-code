@@ -18,7 +18,6 @@ function App() {
   const [stats, setStats] = useState<{ elements: number; complexity: number } | null>(null);
   const [explanation, setExplanation] = useState<{ text: string; tips: string[] } | null>(null);
   const [isExplaining, setIsExplaining] = useState(false);
-  const [flowElements, setFlowElements] = useState<any[]>([]);
 
   const handleVisualize = async () => {
     if (!code.trim()) {
@@ -47,9 +46,6 @@ function App() {
           return;
         }
       }
-
-      // Store flow elements for explanation
-      setFlowElements(analysisResult.flowElements);
 
       // Step 2: Generate visualization
       const visualizationResult = await generateVisualization({
